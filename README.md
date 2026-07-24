@@ -3,8 +3,7 @@
 日本語WordNetのデータを視覚的かつ直感的に検索・探索するためのStreamlit Webアプリケーション。  
 A Streamlit web application designed to visually and intuitively search and explore Japanese WordNet data.
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://shiho1000-japanese-wordnet-search-app-ii1yqa.streamlit.app/)
-👉 [Live Demo / Webアプリで試す](https://shiho1000-japanese-wordnet-search-app-ii1yqa.streamlit.app/)
+👉 [Live Demo / Webアプリで試す](https://ja-wordnet-search.streamlit.app/)
 
 ---
 
