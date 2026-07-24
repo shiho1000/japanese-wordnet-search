@@ -15,6 +15,7 @@ DB_FILE = "wnjpn.db"
 def load_nltk():
     nltk.download('wordnet', quiet=True)
     nltk.download('omw-1.4', quiet=True)
+    nltk.download('omw-2.0', quiet=True)
 
 load_nltk()
 
