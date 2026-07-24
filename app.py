@@ -114,7 +114,7 @@ else:
     # 📥 ダウンロードボタン
     if st.sidebar.button("日本語WordNet DBをダウンロードする (約200MB)"):
         with st.spinner("ダウンロード中...（数分かかる場合があります）"):
-            url = "https://raw.githubusercontent.com/bond-lab/wnja/master/db/wnjpn.db.gz"
+            url = "https://github.com/bond-lab/wnja/releases/download/v1.1/wnjpn.db.gz"
             gz_file = "wnjpn.db.gz"
             urllib.request.urlretrieve(url, gz_file)
             with gzip.open(gz_file, 'rb') as f_in:
