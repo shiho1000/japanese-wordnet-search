@@ -105,7 +105,7 @@ POS_MAP = {
     'r': '副詞 (Adverb)'
 }
 
-st.set_page_config(page_title="Japanese WordNet Search", layout="wide", page_icon="🔍")
+st.set_page_config(page_title="Japanese WordNet Search", layout="wide", page_icon="🚀")
 
 # --- データベースの存在チェック ---
 db_exists = os.path.exists(DB_FILE)
@@ -172,8 +172,8 @@ st.sidebar.caption("© 2026 Japanese WordNet Search UI. Powered by Streamlit & N
 # ==============================================================================
 # 💻 メインボディ（メイン画面）
 # ==============================================================================
-st.title("🔍 Japanese WordNet Search")
-st.markdown("日本語の単語を入力して検索すると、WordNetでのSynset（概念）と類義語、各Synsetの上位語（親概念）や下位語（子概念）が表示されます。")
+st.title("🚀 Japanese WordNet Search")
+st.markdown("単語を入力して検索すると、WordNetでのSynset（概念）と類義語、各Synsetの上位語（親概念）や下位語（子概念）が表示されます。")
 
 # 🔍 検索キーワード入力
 word_input = st.text_input("検索したい単語を入力してください（日本語・英語両対応）：", value="", placeholder="例: 勉強、study、走る、run")
@@ -235,7 +235,7 @@ if word_input:
                     pos_groups_db[pos].append(syn)
                 
                 # 品詞ごとのサブタブ
-                sub_tabs_db = st.tabs([POS_MAP.get(pos, pos) for pos in pos_groups_db.keys()])
+                sub_tabs_db = st.tabs([f"{POS_MAP.get(pos, pos)} ({len(synsets)}件)" for pos, synsets in pos_groups_db.items()])
                 for sub_tab, (pos, synsets) in zip(sub_tabs_db, pos_groups_db.items()):
                     with sub_tab:
                         for syn in synsets:
@@ -328,7 +328,7 @@ if word_input:
                 pos_groups_nltk[pos].append(syn)
             
             # 品詞ごとのサブタブ
-            sub_tabs_nltk = st.tabs([POS_MAP.get(pos, pos) for pos in pos_groups_nltk.keys()])
+            sub_tabs_nltk = st.tabs([f"{POS_MAP.get(pos, pos)} ({len(synsets)}件)" for pos, synsets in pos_groups_nltk.items()])
             for sub_tab, (pos, synsets) in zip(sub_tabs_nltk, pos_groups_nltk.items()):
                 with sub_tab:
                     for syn in synsets:
