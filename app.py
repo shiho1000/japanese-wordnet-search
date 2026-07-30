@@ -128,19 +128,32 @@ st.sidebar.markdown("""
 """)
 
 # --- ロード処理の配置 ---
+# --- ロード処理の配置 ---
 if not db_exists:
     st.sidebar.warning("⚠️ 日本語専用DB（wnjpn.db）が未ロードです。")
-    if st.sidebar.button("📦 データベースファイルを読み込む"):
-        st.sidebar.info("プロジェクト内の `wnjpn.db` を探索中...")
-        # 既にファイルが存在する場合はチェックをパスしてリロード
-        if os.path.exists(DB_FILE):
-            st.sidebar.success("DBファイルのロードに成功しました！")
-            st.rerun()
-        else:
-            st.sidebar.error("リポジトリ内に `wnjpn.db` が見つかりません。ファイルを配置してください。")
+    if st.sidebar.button("📦 データベースを有効化する"):
+        import urllib.request
+        import gzip
+        import shutil
+        
+        with st.sidebar.spinner("データをキャッシュに読み込み中...（数十秒かかります）"):
+            try:
+                # サーバー上にファイルがない場合は自動で取得して解凍・ロードします
+                url = "https://github.com/bond-lab/wnja/releases/download/v1.1/wnjpn.db.gz"
+                gz_file = "wnjpn.db.gz"
+                urllib.request.urlretrieve(url, gz_file)
+                with gzip.open(gz_file, 'rb') as f_in:
+                    with open(DB_FILE, 'wb') as f_out:
+                        shutil.copyfileobj(f_in, f_out)
+                if os.path.exists(gz_file):
+                    os.remove(gz_file)
+                
+                st.sidebar.success("データベースのロードに成功しました！")
+                st.rerun()
+            except Exception as e:
+                st.sidebar.error(f"ロード中にエラーが発生しました: {e}")
 else:
     st.sidebar.success("✅ 日本語専用DB: ロード済み (キャッシュ有効)")
-
 st.sidebar.markdown("---")
 
 st.sidebar.subheader("📊 データソースの違い")
