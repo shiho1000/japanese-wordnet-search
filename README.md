@@ -1,7 +1,7 @@
 # Japanese WordNet Search
 
-日本語WordNetのデータを視覚的かつ直感的に検索・探索するためのStreamlit Webアプリケーション。  
-A Streamlit web application designed to visually and intuitively search and explore Japanese WordNet data.
+日本語WordNetのデータを検索・探索するためのStreamlit Webアプリケーション。  
+A Streamlit web application designed to search and explore Japanese WordNet data.
 
 👉 [Live Demo / Webアプリで試す](https://ja-wordnet-search.streamlit.app/)
 
